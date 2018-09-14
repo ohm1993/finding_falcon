@@ -1,7 +1,97 @@
-  <h3 style="text-align: center;">Select Planet You want to search in</h3>
-  <div class="row">
-    <div class="col-md-3" style="background-color:lavender;">.col-sm-4</div>
-    <div class="col-md-3" style="background-color:lavenderblush;">.col-sm-4</div>
-    <div class="col-md-3" style="background-color:lavender;">.col-sm-4</div>
-    <div class="col-md-3" style="background-color:lavender;">.col-sm-4</div>
-  </div>
+<h3 style="text-align: center;">Select Planet You want to search in</h3>
+<div class="col-md-9">
+      <form name="form" role="form">
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label>Destination1</label>
+                <ui-select ng-model="selectedDestination1" theme="select2" on-select="onSelectCallback1($item)"  style="min-width: 217px;" title="Choose a planet">
+                        <ui-select-match placeholder="Select">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="planet in planets | propsFilter: {name: $select.search}">
+                          <div ng-bind-html="planet.name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                </ui-select>
+                <br><br>
+                <div ng-repeat="vehicle in vehicles" ng-show="showVehiclesForDest1">
+                    <label>
+                                <input type="radio" ng-click="toggleSelection($event)" ng-model="$parent.selectedVehicle" ng-value="vehicle"/>
+                                <span> {{vehicle.name}} </span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Destination2</label>
+                <ui-select ng-model="selectedDestination2" theme="select2" on-select="onSelectCallback2($item)" ng-disabled="disabledDestination2" style="min-width: 217px;" title="Choose a person">
+                        <ui-select-match placeholder="Select">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="planet in planets | propsFilter: {name: $select.search}">
+                          <div ng-bind-html="planet.name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                </ui-select>
+                <br><br>
+                <div ng-repeat="vehicle in vehicles" ng-show="showVehiclesForDest2">
+                        <div>
+                            <label>
+                            <input ng-model="$parent.selectedVehicle2"
+                                    ng-value="vehicle"
+                                    ng-click="vehicleselection2($event)"
+                                    name="secondVehicle"
+                                    type="radio">
+                            <span> {{vehicle.name}} </span>
+                            </label>
+                        </div>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Destination3</label>
+                <ui-select ng-model="selectedDestination3" theme="select2" on-select="onSelectCallback3($item)" ng-disabled="disabledDestination3" style="min-width: 217px;" title="Choose a person">
+                        <ui-select-match placeholder="Select">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="planet in planets | propsFilter: {name: $select.search}">
+                          <div ng-bind-html="planet.name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                </ui-select>
+                <br><br>
+                <div ng-repeat="vehicle in vehicles" ng-show="showVehiclesForDest3">
+                        <div>
+                            <label>
+                            <input ng-model="$parent.selectedVehicle3"
+                                    ng-value="vehicle"
+                                    ng-click="vehicleselection3($event)"
+                                    name="thirdVehicle"
+                                    type="radio">
+                            <span> {{vehicle.name}} </span>
+                            </label>
+                        </div>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Destination4</label>
+                <ui-select ng-model="selectedDestination4" theme="select2" on-select="onSelectCallback4($item)" ng-disabled="disabledDestination4" style="min-width: 217px;" title="Choose a person">
+                        <ui-select-match placeholder="Select">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="planet in planets | propsFilter: {name: $select.search}">
+                          <div ng-bind-html="planet.name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                </ui-select>
+                <br><br>
+                <div ng-repeat="vehicle in vehicles" ng-show="showVehiclesForDest4">
+                        <div>
+                            <label>
+                            <input ng-model="$parent.selectedVehicle4"
+                                    ng-value="vehicle"
+                                    ng-click="vehicleselection4($event)"
+                                    name="fourthVehicle"
+                                    type="radio">
+                            <span> {{vehicle.name}} </span>
+                            </label>
+                        </div>
+                </div>
+            </div>
+        </div>
+      </form>
+     
+</div>
+<div class="col-md-3">
+    <h2 style="text-align: center;">Time Taken</h2>
+    <h2  style="text-align: center;">{{timetaken}}</h2>
+</div>
+<div class="col-md-9 wrapper">
+        <button type="button" class="btn btn-default" ng-click="findfalcone()">Find Falcone</button>
+</div>
